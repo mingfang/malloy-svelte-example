@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite dev --host --port 3000",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -33,8 +33,8 @@
   },
   "type": "module",
   "dependencies": {
-    "@malloydata/db-duckdb": "^0.0.105",
-    "@malloydata/malloy": "^0.0.105",
-    "@malloydata/render": "^0.0.105"
+    "@malloydata/db-duckdb": "^0.0.202",
+    "@malloydata/malloy": "^0.0.202",
+    "@malloydata/render": "^0.0.202"
   }
 }

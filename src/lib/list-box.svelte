@@ -11,11 +11,7 @@
 
   $: {
     model.runQuery(`run: example -> { group_by: ${field} }`).then((r) => {
-      data = [];
-      for (const row of r.data) {
-        const value = row.cell(field).value as string;
-        data.push(value);
-      }
+      data = [...r.data].map(row => row.cell(field).value as string);
     });
   }
 

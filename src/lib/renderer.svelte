@@ -1,21 +1,23 @@
 <script lang="ts">
   import type { Result } from '@malloydata/malloy';
-  import '@malloydata/render';
+  import '@malloydata/render/webcomponent';
   import { getMalloyModel } from './malloy';
 
   export let query: string;
 
-  let data: Result;
+  let result: Result;
 
   const model = getMalloyModel('malloy-model');
 
   $: {
-    model.runQuery(query).then((result) => {
-      data = result;
-    });
+    result = model.runQuery(query);
+  }
+
+  function props(node, props = {}){
+    Object.assign(node, props)
   }
 </script>
 
-{#if data}
-  <malloy-render result={data}></malloy-render>
-{/if}
+{#await result then data}
+  <malloy-render use:props={{result: data}}></malloy-render>
+{/await}
